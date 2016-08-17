@@ -1,0 +1,16 @@
+$(document).ready(function(){
+  var hash = window.location.hash;
+  if ( hash != ""){
+      var hash = hash.substring(1);
+      var interval = setInterval(function(){
+          var top = $("#" + hash).offset().top;
+          var windowTop = $(window).scrollTop();
+          var headerHeight = $(".header").outerHeight();
+          var displacement = top - headerHeight;
+          $(window).scrollTop(top - headerHeight);
+          if ( displacement == windowTop){
+              clearInterval(interval);
+          }
+      },100);
+  }
+});
